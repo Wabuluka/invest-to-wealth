@@ -1,0 +1,4 @@
+.history/
+.travis.yml
+LICENSE
+vendor/
