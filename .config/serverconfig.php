@@ -6,9 +6,13 @@
 	$pass = "Webbie@1994";
 	$dbname = "invest";
 
-	$cxn = mysqli_connect($host, $user, $pass, $dbname)
-		or die ('Could not establish connection to database' .mysql_error());
+	$cxn = mysqli_connect($host, $user, $pass, $dbname);
 
+    if (!$cxn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    echo "Connected successfully";
+        ?>
 
 ?>
 
