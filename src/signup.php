@@ -1,3 +1,4 @@
+<?php include('../.config/serverconfig.php');?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,19 +52,19 @@
             <form>
               <div class="form-group">
                 <label for="formGroupExampleInput">Username</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="username">
               </div>
               <div class="form-group">
                 <label for="formGroupExampleInput2">Email</label>
-                <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="email">
               </div>
               <div class="form-group">
                 <label for="formGroupExampleInput2">Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="password">
               </div>
               <div class="form-group">
-                <label for="formGroupExampleInput2">Comfirm password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                <label for="formGroupExampleInput2">Confirm password</label>
+                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="confirm password">
               </div>
               <button type="submit" class="btn btn-primary">Sign up</button>
             </form>
@@ -72,12 +73,12 @@
           <h3>Login</h3>
             <form>
               <div class="form-group">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                <label for="formGroupExampleInput">Username/email</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="username or email">
               </div>
               <div class="form-group">
-                <label for="formGroupExampleInput2">Another label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                <label for="formGroupExampleInput2">Password</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="password">
               </div>
               <button type="submit" class="btn btn-primary">Login</button>
             </form>
