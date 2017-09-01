@@ -1,4 +1,58 @@
-<?php include('../.config/serverconfig.php');?>
+<?php 
+  //including the config file
+  include ('../.config/serverconfig.php');
+
+  //collecting data from the signup form alone
+  $userName = $userEmail = $password = $confirmPassword = '';
+
+  //checks if submit button has been clicked
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $userName = test_input($_POST["username"]);
+    $userEmail = test_input($_POST["useremail"]);
+    $password = test_input($_POST["password"]);
+    $confirmPassword = test_input($_POST["confirmpassword"]);
+  }
+
+
+  //inserting to the database
+  if(true){
+    $sql = "INSERT INTO `user` (`userName`, `email`, `password`) VALUES ('".$userName."', '".$userEmail."', '".$password."') ";
+    if(mysqli_query($cxn, $sql)){
+
+    }else{
+      echo 'error inserting data'.mysql_error($cxn);
+    }
+  }
+
+  //working on the login part as well
+  $userNameLogin = $passwordLogin = '';
+  //checks if submit button has been clicked
+  if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $userNameLogin = test_input($_POST["usernamelogin"]);
+    $passwordLogin = test_input($_POST["passwordlogin"]);
+  }
+
+
+  //cleaning both sign up and login data before processing
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
+  $sqllogin = "SELECT `userName` FROM `user` WHERE userName='".$userNameLogin."' AND password = '".$passwordLogin."'";
+  $resultLogin = $cxn->query($sqllogin);
+
+if ($result->num_rows > 0) {
+
+} else {
+    echo "User not found";
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,12 +63,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Scrolling Nav - Start Bootstrap Template</title>
+    <title>XXNX</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template -->•••••••••••
     <link href="../css/scrolling-nav.css" rel="stylesheet">
 
   </head>
@@ -49,36 +103,36 @@
         <div class="row">
           <div class="col-lg-8">
           <h3>Sign up</h3>
-            <form>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
               <div class="form-group">
                 <label for="formGroupExampleInput">Username</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="username">
+                <input type="text" class="form-control" name = "username" id="formGroupExampleInput" placeholder="username">
               </div>
               <div class="form-group">
                 <label for="formGroupExampleInput2">Email</label>
-                <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="email">
+                <input type="email" class="form-control" name = "useremail" id="formGroupExampleInput2" placeholder="email" value="">
               </div>
               <div class="form-group">
                 <label for="formGroupExampleInput2">Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="password">
+                <input type="password" class="form-control" name = "password" id="formGroupExampleInput2" placeholder="password">
               </div>
               <div class="form-group">
                 <label for="formGroupExampleInput2">Confirm password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="confirm password">
+                <input type="password" class="form-control" name = "confirmpassword" id="formGroupExampleInput2" placeholder="confirm password">
               </div>
               <button type="submit" class="btn btn-primary">Sign up</button>
             </form>
           </div>
           <div class="col-lg-4">
           <h3>Login</h3>
-            <form>
+            <form action="dashboard.php" method="POST">
               <div class="form-group">
-                <label for="formGroupExampleInput">Username/email</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="username or email">
+                <label for="formGroupExampleInput">Username</label>
+                <input type="text" class="form-control" name = "usernamelogin" id="formGroupExampleInput" placeholder="username">
               </div>
               <div class="form-group">
                 <label for="formGroupExampleInput2">Password</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="password">
+                <input type="password" class="form-control" name = "passwordlogin" id="formGroupExampleInput2" placeholder="password">
               </div>
               <button type="submit" class="btn btn-primary">Login</button>
             </form>
